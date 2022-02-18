@@ -38,6 +38,17 @@ class OrderSeeder {
         "value": 35.00,
         "comments": "Plaquinha de Girassol"
       },
+      {
+        "name_client": "Teste",
+        "delivery_date": "20/01/2022",
+        "delivery_time": "15:00",
+        "name_product": "Bolo de Chocolate",
+        "amount": 1,
+        "filling": "Chocolate com beijinho",
+        "value": 35.00,
+        "comments": "Plaquinha de Girassol",
+        "order_delivered": true
+      },
     ])
   }
 }
