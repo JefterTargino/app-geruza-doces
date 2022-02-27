@@ -8,8 +8,8 @@ class OrderSchema extends Schema {
     this.create('orders', (table) => {
       table.increments()
       table.string('name_client', 30).notNullable();
-      // table.date('delivery_date').notNullable();
-      table.string('delivery_date',10).notNullable();
+      table.date('delivery_date').notNullable();
+      //table.string('delivery_date',10).notNullable();
       table.string('delivery_time', 5).notNullable();
       table.string('name_product', 30).notNullable();
       table.integer('amount').notNullable();
