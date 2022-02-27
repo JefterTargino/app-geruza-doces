@@ -28,9 +28,14 @@ class OrderController {
 
     async index({ response }){
         try{
-        const teste = Order.query().orderBy('updated_at', 'desc').fetch();
-        
-        return teste;
+        //const order = await Order.all();
+        const order = await Order
+        .query()
+        .orderBy('order_delivered','asc')
+        .orderBy('delivery_date', 'asc')
+        .orderBy('delivery_time', 'asc')
+        .fetch()
+        return order;
         }catch(error){
             return response.status(404).json({message: error })
         };
