@@ -28,6 +28,16 @@ class ProductSeeder {
         "value": 35.00,
         "comments": "Bolo quadrado ou redondo"
       },
+      {
+        "name_product": "Bolo de Glacê1",
+        "value": 35,
+        "comments": "Bolo quadrado ou redondo"
+      },
+      {
+        "name_product": "Bolo de Glacê2",
+        "value": 35,
+        "comments": "Bolo quadrado ou redondo"
+      },
     ])
   }
 }
