@@ -43,3 +43,13 @@ Route.group(() => {
                   }
               )
               .prefix('product');
+
+Route.group(() => {
+                    Route.post('/','ListProductController.create')
+                    Route.delete('/:id', 'ListProductController.delete');
+                    Route.put('/:id', 'ListProductController.update');
+                    Route.get('/', 'ListProductController.index');
+                    Route.get('/:id', 'ListProductController.show');
+                  }
+              )
+              .prefix('listProduct');

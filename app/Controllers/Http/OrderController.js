@@ -44,6 +44,9 @@ class OrderController {
     async show ({ params, response }) {
         try{
         const order = await Order.findOrFail(params.id);
+        // await order.load('listProduct', (postsQuery) =>{
+        //     postsQuery.orderBy('id','asc')
+        // })
       
         return order;
         }catch(error){
