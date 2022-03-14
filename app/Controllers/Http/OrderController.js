@@ -1,6 +1,7 @@
 'use strict'
 
 const Order = use("App/Models/Order");
+const Database = use('Database');
 
 class OrderController {
     async create({ request, response}) {
@@ -47,8 +48,8 @@ class OrderController {
         await order.load('listProduct', (postsQuery) =>{
             postsQuery.orderBy('id','asc')
         })
-      
-        return order;
+        const teste = await Database.from('list_products').where('order_id','=',params.id).sum('value');
+        return Object.assign(order, teste[0]);
         }catch(error){
             return response.status(404).json({message:  error })
         };

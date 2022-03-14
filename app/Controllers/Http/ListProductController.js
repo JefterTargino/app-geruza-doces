@@ -1,11 +1,16 @@
 'use strict'
 
 const ListProduct = use("App/Models/ListProduct");
+const Database = use('Database');
 
 class ListProductController {
     async create({ request, response}) {
       try{
+      const query = await Database.from('products').select('value').where('name_product','=', request.input('name_product'))
+      const value = parseFloat(query[0].value)
       const data = request.all([]);
+      const amount = request.input('amount')
+      data.value = value*amount;
       return await ListProduct.create(data);
       }catch(error){
           return response.status(500).json({message: error })
