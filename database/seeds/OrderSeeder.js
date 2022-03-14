@@ -22,31 +22,19 @@ class OrderSeeder {
         "name_client": "Jefter Roberto Mota Targino",
         "delivery_date": "15/02/2022",
         "delivery_time": "15:00",
-        "name_product": "Bolo de Pasta",
-        "amount": 1,
-        "filling": "Chocolate com beijinho",
-        "value": 35.00,
-        "comments": "Cliente solicitou as plaquinhas do Flamengo Bicampeão Mundial"
+        "phone": "84988331126",
       },
       {
         "name_client": "Jennyffer Roberta Mota Targino",
         "delivery_date": "15/02/2022",
         "delivery_time": "20:00",
-        "name_product": "Bolo de Chocolate",
-        "amount": 1,
-        "filling": "Chocolate com beijinho",
-        "value": 35.00,
-        "comments": "Plaquinha de Girassol"
+        "phone": "84988331126",
       },
       {
         "name_client": "Geruza Mota de Melo Targino",
         "delivery_date": "18/02/2022",
         "delivery_time": "10:00",
-        "name_product": "Bolo de Chocolate",
-        "amount": 1,
-        "filling": "Chocolate com beijinho",
-        "value": 35.00,
-        "comments": "Plaquinha de Girassol",
+        "phone": "84988331126",
         "order_delivered": true
       },
     ])
