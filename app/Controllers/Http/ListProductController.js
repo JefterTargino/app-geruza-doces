@@ -20,9 +20,11 @@ class ListProductController {
     async update({ params, request, response }) {
       try{
       const list_product = await ListProduct.findOrFail(params.id);
-
+      const query = await Database.from('products').select('value').where('name_product','=', request.input('name_product'))
+      const value = parseFloat(query[0].value)
       const data = request.all([]);
-
+      const amount = request.input('amount')
+      data.value = value*amount;
       list_product.merge(data);
 
       return list_product.save();
