@@ -30,7 +30,11 @@ class ProductController {
 
     async index({ response }){
         try{
-        const product = await Product.all();
+        //const product = await Product.all();
+        const product = await Product
+        .query()
+        .orderBy('name_product','asc')
+        .fetch()
 
         return product;
         }catch(error){
