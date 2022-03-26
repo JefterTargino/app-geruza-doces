@@ -8,15 +8,27 @@ class ResumeController {
 
   async financial({response}){
     try {
-      const received = await Database
+      const date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth()+1;
+      var day = date.getDate()
+
+      const yearInitial = year +'-01-01 00:00:00'
+      const yearFinal = year +'-12-31 23:59:59'
+      const monthInitial = year +'-0'+month+'-01 00:00:00'
+      const monthFinal = year +'-0'+month+'-31 23:59:59'
+      const dayInitial = year +'-0'+month+'-'+day+' 00:00:00'
+      const dayFinal = year +'-0'+month+'-'+day+' 23:59:59'
+
+      const financialReceived = await Database
       .from('list_products')
       .sum('value as value_received')
       .whereIn('order_id',[Database
                           .from('orders')
                           .where('order_delivered','=',true)
                           .select('id')])
-
-      const notReceived = await Database
+                          
+      const financialNotReceived = await Database
       .from('list_products')
       .sum('value as value_notReceived')
       .whereIn('order_id',[Database
@@ -24,7 +36,67 @@ class ResumeController {
                           .where('order_delivered','=',false)
                           .select('id')])
 
-      return Object.assign(received[0],notReceived[0]) ;
+      const financialYear = await Database
+      .from('list_products')
+      .sum('value as year_notReceived')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .whereBetween('delivery_date', [yearInitial, yearFinal])
+                          .where('order_delivered','=',false)
+                          .select('id')])
+                          
+      const FinancialMonth = await Database
+      .from('list_products')
+      .sum('value as month_notReceived')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .whereBetween('delivery_date', [monthInitial, monthFinal])
+                          .where('order_delivered','=',false)
+                          .select('id')])
+
+      const financialDay = await Database
+      .from('list_products')
+      .sum('value as day_notReceived')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .whereBetween('delivery_date', [dayInitial, dayFinal])
+                          .where('order_delivered','=',false)
+                          .select('id')])
+                          
+      const financialYearReceived = await Database
+      .from('list_products')
+      .sum('value as year_Received')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .whereBetween('delivery_date', [yearInitial, yearFinal])
+                          .where('order_delivered','=',true)
+                          .select('id')])
+
+      const financialMonthReceived = await Database
+      .from('list_products')
+      .sum('value as month_Received')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .whereBetween('delivery_date', [monthInitial, monthFinal])
+                          .where('order_delivered','=',true)
+                          .select('id')])
+                          
+      const financialDayReceived = await Database
+      .from('list_products')
+      .sum('value as day_Received')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .whereBetween('delivery_date', [dayInitial, dayFinal])
+                          .where('order_delivered','=',true)
+                          .select('id')])
+             
+      // if(financialDayReceived[0].day_Received== null){
+      //   financialDayReceived[0].day_Received=0
+      // }
+
+      return Object.assign(financialReceived[0],financialNotReceived[0],financialYear[0],
+        FinancialMonth[0],financialDay[0],financialYearReceived[0],
+        financialMonthReceived[0],financialDayReceived[0]) ;
 
     } catch (error) {
       return response.status(500).json({message: error })
