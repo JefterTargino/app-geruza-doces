@@ -5,6 +5,32 @@ const Database = use('Database')
 const Resume = use("App/Models/Resume");
 
 class ResumeController {
+
+  async financial({response}){
+    try {
+      const received = await Database
+      .from('list_products')
+      .sum('value as value_received')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .where('order_delivered','=',true)
+                          .select('id')])
+
+      const notReceived = await Database
+      .from('list_products')
+      .sum('value as value_notReceived')
+      .whereIn('order_id',[Database
+                          .from('orders')
+                          .where('order_delivered','=',false)
+                          .select('id')])
+
+      return Object.assign(received[0],notReceived[0]) ;
+
+    } catch (error) {
+      return response.status(500).json({message: error })
+    }
+  }
+
   async resume({ params, request, response }) {
     try{
       const date = new Date();

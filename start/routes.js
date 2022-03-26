@@ -55,3 +55,4 @@ Route.group(() => {
               .prefix('listProduct');
 
               Route.get('resume/','ResumeController.resume')
+              Route.get('financial/','ResumeController.financial')

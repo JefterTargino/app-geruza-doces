@@ -14,7 +14,7 @@ class ListProductSchema extends Schema {
       .onDelete('CASCADE')
       .notNullable();
       table.string('name_product', 30).notNullable();
-      table.integer('amount').notNullable();
+      table.float('amount').notNullable();
       table.string('filling', 30).notNullable();
       table.float('value').notNullable();
       table.string('comments', 70).notNullable();

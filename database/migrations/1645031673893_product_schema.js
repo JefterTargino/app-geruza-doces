@@ -9,7 +9,7 @@ class ProductSchema extends Schema {
       table.increments()
       table.string('name_product', 30).notNullable().unique();
       table.float('value').notNullable();
-      table.string('comments', 70).notNullable();
+      table.string('comments', 70)
       table.timestamps()
     })
   }
