@@ -90,9 +90,30 @@ class ResumeController {
                           .where('order_delivered','=',true)
                           .select('id')])
              
-      // if(financialDayReceived[0].day_Received== null){
-      //   financialDayReceived[0].day_Received=0
-      // }
+      if(financialDayReceived[0].financialReceived== null){
+        financialDayReceived[0].financialReceived=0
+      }
+      if(financialDayReceived[0].financialNotReceived== null){
+        financialDayReceived[0].financialNotReceived=0
+      }
+      if(financialDayReceived[0].financialYear== null){
+        financialDayReceived[0].financialYear=0
+      }
+      if(financialDayReceived[0].FinancialMonth== null){
+        financialDayReceived[0].FinancialMonth=0
+      }
+      if(financialDayReceived[0].financialDay== null){
+        financialDayReceived[0].financialDay=0
+      }
+      if(financialDayReceived[0].financialYearReceived== null){
+        financialDayReceived[0].financialYearReceived=0
+      }
+      if(financialDayReceived[0].financialMonthReceived== null){
+        financialDayReceived[0].financialMonthReceived=0
+      }
+      if(financialDayReceived[0].financialDayReceived== null){
+        financialDayReceived[0].financialDayReceived=0
+      }
 
       return Object.assign(financialReceived[0],financialNotReceived[0],financialYear[0],
         FinancialMonth[0],financialDay[0],financialYearReceived[0],
