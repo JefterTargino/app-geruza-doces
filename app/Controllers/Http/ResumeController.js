@@ -90,29 +90,29 @@ class ResumeController {
                           .where('order_delivered','=',true)
                           .select('id')])
              
-      if(financialDayReceived[0].financialReceived== null){
-        financialDayReceived[0].financialReceived=0
+      if(financialReceived[0].value_received == null){
+        financialReceived[0].value_received = 0
       }
-      if(financialDayReceived[0].financialNotReceived== null){
-        financialDayReceived[0].financialNotReceived=0
+      if(financialNotReceived[0].value_notReceived == null){
+        financialNotReceived[0].value_notReceived = 0
       }
-      if(financialDayReceived[0].financialYear== null){
-        financialDayReceived[0].financialYear=0
+      if(financialYear[0].year_notReceived == null){
+        financialYear[0].year_notReceived = 0
       }
-      if(financialDayReceived[0].FinancialMonth== null){
-        financialDayReceived[0].FinancialMonth=0
+      if(FinancialMonth[0].month_notReceived == null){
+        FinancialMonth[0].month_notReceived=0
       }
-      if(financialDayReceived[0].financialDay== null){
-        financialDayReceived[0].financialDay=0
+      if(financialDay[0].day_notReceived == null){
+        financialDay[0].day_notReceived = 0
       }
-      if(financialDayReceived[0].financialYearReceived== null){
-        financialDayReceived[0].financialYearReceived=0
+      if(financialYearReceived[0].year_Received == null){
+        financialYearReceived[0].year_Received = 0
       }
-      if(financialDayReceived[0].financialMonthReceived== null){
-        financialDayReceived[0].financialMonthReceived=0
+      if(financialMonthReceived[0].month_Received == null){
+        financialMonthReceived[0].month_Received = 0
       }
-      if(financialDayReceived[0].financialDayReceived== null){
-        financialDayReceived[0].financialDayReceived=0
+      if(financialDayReceived[0].day_Received == null){
+        financialDayReceived[0].day_Received = 0
       }
 
       return Object.assign(financialReceived[0],financialNotReceived[0],financialYear[0],
