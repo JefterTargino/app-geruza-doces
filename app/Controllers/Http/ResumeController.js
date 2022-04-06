@@ -16,7 +16,15 @@ class ResumeController {
       const yearInitial = year +'-01-01 00:00:00'
       const yearFinal = year +'-12-31 23:59:59'
       const monthInitial = year +'-0'+month+'-01 00:00:00'
-      const monthFinal = year +'-0'+month+'-31 23:59:59'
+      if(month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12){
+        var monthFinal = year +'-0'+month+'-31 23:59:59'
+      }
+      else if (month==2){
+        var monthFinal = year +'-0'+month+'-28 23:59:59'
+      }
+      else{
+        var monthFinal = year +'-0'+month+'-30 23:59:59'
+      }
       const dayInitial = year +'-0'+month+'-'+day+' 00:00:00'
       const dayFinal = year +'-0'+month+'-'+day+' 23:59:59'
 
@@ -138,7 +146,15 @@ class ResumeController {
       const yearInitial = year +'-01-01 00:00:00'
       const yearFinal = year +'-12-31 23:59:59'
       const monthInitial = year +'-0'+month+'-01 00:00:00'
-      const monthFinal = year +'-0'+month+'-31 23:59:59'
+      if(month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12){
+        var monthFinal = year +'-0'+month+'-31 23:59:59'
+      }
+      else if (month==2){
+        var monthFinal = year +'-0'+month+'-28 23:59:59'
+      }
+      else{
+        var monthFinal = year +'-0'+month+'-30 23:59:59'
+      }
       const dayInitial = year +'-0'+month+'-'+day+' 00:00:00'
       const dayFinal = year +'-0'+month+'-'+day+' 23:59:59'
      
