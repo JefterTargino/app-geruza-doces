@@ -15,9 +15,9 @@ class ListProductSchema extends Schema {
       .notNullable();
       table.string('name_product', 30).notNullable();
       table.float('amount').notNullable();
-      table.string('filling', 30).notNullable();
+      table.string('filling', 70);//.notNullable();
       table.float('value').notNullable();
-      table.string('comments', 70).notNullable();
+      table.string('comments', 70);//.notNullable();
       table.timestamps()
     })
   }
