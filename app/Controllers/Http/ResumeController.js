@@ -15,18 +15,18 @@ class ResumeController {
 
       const yearInitial = year +'-01-01 00:00:00'
       const yearFinal = year +'-12-31 23:59:59'
-      const monthInitial = year +'-0'+month+'-01 00:00:00'
+      const monthInitial = year +'-'+month+'-01 00:00:00'
       if(month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12){
-        var monthFinal = year +'-0'+month+'-31 23:59:59'
+        var monthFinal = year +'-'+month+'-31 23:59:59'
       }
       else if (month==2){
-        var monthFinal = year +'-0'+month+'-28 23:59:59'
+        var monthFinal = year +'-'+month+'-28 23:59:59'
       }
       else{
-        var monthFinal = year +'-0'+month+'-30 23:59:59'
+        var monthFinal = year +'-'+month+'-30 23:59:59'
       }
-      const dayInitial = year +'-0'+month+'-'+day+' 00:00:00'
-      const dayFinal = year +'-0'+month+'-'+day+' 23:59:59'
+      const dayInitial = year +'-'+month+'-'+day+' 00:00:00'
+      const dayFinal = year +'-'+month+'-'+day+' 23:59:59'
 
       const financialReceived = await Database
       .from('list_products')
@@ -145,18 +145,18 @@ class ResumeController {
       }
       const yearInitial = year +'-01-01 00:00:00'
       const yearFinal = year +'-12-31 23:59:59'
-      const monthInitial = year +'-0'+month+'-01 00:00:00'
+      const monthInitial = year +'-'+month+'-01 00:00:00'
       if(month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12){
-        var monthFinal = year +'-0'+month+'-31 23:59:59'
+        var monthFinal = year +'-'+month+'-31 23:59:59'
       }
       else if (month==2){
-        var monthFinal = year +'-0'+month+'-28 23:59:59'
+        var monthFinal = year +'-'+month+'-28 23:59:59'
       }
       else{
-        var monthFinal = year +'-0'+month+'-30 23:59:59'
+        var monthFinal = year +'-'+month+'-30 23:59:59'
       }
-      const dayInitial = year +'-0'+month+'-'+day+' 00:00:00'
-      const dayFinal = year +'-0'+month+'-'+day+' 23:59:59'
+      const dayInitial = year +'-'+month+'-'+day+' 00:00:00'
+      const dayFinal = year +'-'+month+'-'+day+' 23:59:59'
      
       const resumeDelivered = await Database
       .count('* as delivered').from('orders')
@@ -204,6 +204,26 @@ class ResumeController {
         return response.status(500).json({message: error })
     };
 };
+  async searchName({ params, request, response }) {
+    try{
+      var name_client = Object.values(params).toString()
+      const query = await Database.from('orders').select().where('name_client','=', name_client)
+      return query;
+      
+    }catch(error){
+        return response.status(500).json({message: error })
+    };
+  };
+  async searchDate({ params, request, response }) {
+    try{
+      var delivery_date = Object.values(params).toString()
+      const query = await Database.from('orders').select().where('delivery_date','=', delivery_date)
+      return query;
+      
+    }catch(error){
+        return response.status(500).json({message: error })
+    };
+  };
 }
 
 module.exports = ResumeController
