@@ -56,5 +56,6 @@ Route.group(() => {
 
               Route.get('resume/','ResumeController.resume')
               Route.get('financial/','ResumeController.financial')
+////
               Route.get('search/name/:id','ResumeController.searchName')
               Route.get('search/date/:id','ResumeController.searchDate')
