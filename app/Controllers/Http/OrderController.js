@@ -33,8 +33,8 @@ class OrderController {
         const order = await Order
         .query()
         .orderBy('order_delivered','asc')
-        .orderBy('delivery_date', 'asc')
-        .orderBy('delivery_time', 'asc')
+        .orderBy('delivery_date', 'desc')
+        .orderBy('delivery_time', 'desc')
         .fetch()
         return order;
         }catch(error){
